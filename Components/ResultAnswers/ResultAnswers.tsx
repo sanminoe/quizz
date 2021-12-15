@@ -10,11 +10,11 @@ function ResultAnswers(props: PropsResultComponent) {
       <Accordion.Header>{props.question}</Accordion.Header>
       <Accordion.Body>
         <Stack gap={3}>
-          {props.choises.map((c) => (
+          {props.choices.map((c) => (
             <ResultBox
               text={c.text}
-              key={c.id}
-              selected={c.choosen}
+              key={c.keyId}
+              choosen={c.choosen as boolean}
               isCorrect={c.isCorrect}
             />
           ))}

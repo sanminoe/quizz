@@ -16,13 +16,13 @@ export interface QuestionType {
 export interface PropsResultComponent {
   eventKey: string;
   question: string;
-  choises: Choice[];
+  choices: Choice[];
   explanation?: string;
 }
 
 export type PropsResultBoxComponent = {
   text: string;
-  selected: boolean;
+  choosen: boolean;
   isCorrect: boolean;
 };
 

@@ -223,7 +223,7 @@ function Quiz() {
                 <Accordion defaultActiveKey="0">
                   {data?.question.map((t, i) => (
                     <ResultAnswers
-                      choises={t.choices}
+                      choices={t.choices}
                       question={t.name}
                       eventKey={"" + i}
                       key={t.keyId}
