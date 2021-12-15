@@ -13,10 +13,10 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Navbar.Brand>Quizz</Navbar.Brand>
           <Navbar.Collapse className="me-auto">
             <Nav>
-              <Link href="/">
+              <Link href="/" passHref>
                 <Nav.Link>Home</Nav.Link>
               </Link>
-              <Link href="/profile">
+              <Link href="/profile" passHref>
                 <Nav.Link>My Profile</Nav.Link>
               </Link>
             </Nav>

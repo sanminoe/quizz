@@ -81,7 +81,7 @@ function Profile() {
   };
 
   const ques = fields.map((field, index) => (
-    <React.Fragment>
+    <React.Fragment key={field.id}>
       <div className="mt-3" key={field.id}>
         <Stack direction="horizontal">
           <div>

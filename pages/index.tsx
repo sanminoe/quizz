@@ -16,7 +16,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     console.log(snapshots?.map((v) => v.val()));
     setQuizes(snapshots?.map((v) => v.val()) as IFormInputs[]);
-  }, [loading]);
+  }, [loading, snapshots]);
 
   let quizesCards = quizes.map((quiz) => (
     <Card key={quiz.keyId} className="w-50 m-auto">

@@ -4,10 +4,10 @@ import { PropsResultBoxComponent } from "../../types/types";
 function ResultBox(props: PropsResultBoxComponent) {
   let isAnswer = false;
   let resultClasses = `border border-2 border-primary`;
-  if (props.isCorrect || (props.selected && props.isCorrect)) {
+  if (props.isCorrect || (props.choosen && props.isCorrect)) {
     isAnswer = true;
     resultClasses = "bg-success text-white";
-  } else if (props.isCorrect === false && props.selected) {
+  } else if (props.isCorrect === false && props.choosen) {
     resultClasses = "bg-danger text-white";
   } else {
     resultClasses = `border border-2 border-primary`;
