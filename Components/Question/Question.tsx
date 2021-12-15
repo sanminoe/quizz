@@ -1,26 +1,21 @@
 import React, { MouseEventHandler } from "react";
 import { Container, Row, Col, Stack, Button } from "react-bootstrap";
-
+import { Choice } from "../../types/types";
 interface Props {
-  choises: Choise[];
+  choices: Choice[];
   question: string;
   hasAnswer: boolean;
   onChoose: Function;
   onClickNext: MouseEventHandler;
 }
-interface Choise {
-  id: string;
-  text: string;
-  choosen: boolean;
-}
 
 function Question(props: Props) {
-  let choisesElement = props.choises.map((c, i) => (
-    <div className="w-75" key={c.id}>
+  let choisesElement = props.choices.map((c, i) => (
+    <div className="w-75" key={c.keyId}>
       <Button
         variant={`${c.choosen ? "primary" : "outline-primary"}`}
         className="w-100 m-2 d-flex align-items-center "
-        onClick={() => props.onChoose(c.id)}
+        onClick={() => props.onChoose(c.keyId)}
       >
         {i + 1}. {c.text}
       </Button>

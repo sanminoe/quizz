@@ -1,8 +1,34 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-
+import { database } from "../firebase/clientApp";
+import { equalTo, limitToFirst, query, ref } from "@firebase/database";
+import { useList } from "react-firebase-hooks/database";
+import React, { useEffect, useState } from "react";
+import { IFormInputs } from "../types/types";
+import { Button, Card, Stack } from "react-bootstrap";
+import Link from "next/link";
 const Home: NextPage = () => {
+  const [snapshots, loading, error] = useList(
+    query(ref(database, `quiz`), limitToFirst(10))
+  );
+  const [quizes, setQuizes] = useState<IFormInputs[]>([]);
+  useEffect(() => {
+    console.log(snapshots?.map((v) => v.val()));
+    setQuizes(snapshots?.map((v) => v.val()) as IFormInputs[]);
+  }, [loading]);
+
+  let quizesCards = quizes.map((quiz) => (
+    <Card key={quiz.keyId} className="w-50 m-auto">
+      <Card.Body>
+        <Card.Title>{quiz.quizName}</Card.Title>
+        <Card.Text>{quiz.quizDescription}</Card.Text>
+        <Link href={`/quiz/${quiz.keyId}`}>
+          <Button variant="primary">try now!</Button>
+        </Link>
+      </Card.Body>
+    </Card>
+  ));
   return (
     <div className={styles.container}>
       <Head>
@@ -11,6 +37,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       home page
+      <Stack>{quizesCards}</Stack>
     </div>
   );
 };

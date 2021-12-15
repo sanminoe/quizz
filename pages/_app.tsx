@@ -4,6 +4,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import Link from "next/link";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <React.Fragment>
@@ -12,8 +13,12 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Navbar.Brand>Quizz</Navbar.Brand>
           <Navbar.Collapse className="me-auto">
             <Nav>
-              <Nav.Link>Home</Nav.Link>
-              <Nav.Link>My Profile</Nav.Link>
+              <Link href="/">
+                <Nav.Link>Home</Nav.Link>
+              </Link>
+              <Link href="/profile">
+                <Nav.Link>My Profile</Nav.Link>
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
